@@ -1,0 +1,25 @@
+<div class="job-card">
+    <div class="job-card-body">
+        <div class="job-card-top">
+            <div>
+                <h3 class="job-card-title">{{ job()?.title }}</h3>
+                <p class="job-card-company">{{ job()?.company }}</p>
+            </div>
+            @if (job()?.minSalary) {
+            <span class="job-card-salary">{{ job()?.minSalary }} - {{ job()?.maxSalary }} $</span>
+            }
+        </div>
+        <div class="job-card-meta">
+            <span class="meta-tag">{{ job()?.location }}</span>
+            <span class="meta-tag meta-tag--muted">{{ job()?.date | date : 'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <p class="job-card-desc">{{ job()?.description }}</p>
+    </div>
+    <div class="job-card-footer">
+        <a [href]="job()?.url" target="_blank" rel="noopener" class="btn btn-sm">View Offer</a>
+        @if (isAuthenticated) {
+        <button class="btn btn-sm btn-ghost" (click)="onAddToFavorites()">&#9825; Save</button>
+        <button class="btn btn-sm btn-ghost" (click)="onTrackApplication()">+ Track</button>
+        }
+    </div>
+</div>

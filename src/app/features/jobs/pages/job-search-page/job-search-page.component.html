@@ -1,0 +1,13 @@
+<div class="page">
+    <div class="page-header">
+        <h1>Find your next opportunity</h1>
+        <p class="page-subtitle">Search thousands of jobs from top companies worldwide</p>
+    </div>
+    <app-search-filters (search)="onSearch($event)"></app-search-filters>
+    @if (isLoading()) {
+    <app-loader></app-loader>
+    }
+    <app-search-results [jobsList]="jobs()" [currentPage]="currentPage()" 
+    [totalPages]="totalPages()" (previous)="prevPage()" (next)="nextPage()">
+    </app-search-results>
+</div>

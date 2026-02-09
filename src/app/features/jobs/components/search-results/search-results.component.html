@@ -1,0 +1,15 @@
+<div class="search-results">
+    @if (jobsList().length === 0) {
+    <p class="no-results">No results found. Try a different search.</p>
+    }
+    @for (job of jobsList(); track job.id) {
+    <app-job-card [job]="job"></app-job-card>
+    }
+    @if (jobsList().length > 0) {
+   <div class="pagination">
+    <button (click)="previousPage()">&larr; Prev</button>
+    <span class="pagination-info">{{ currentPage() }} Page of {{ totalPages() }}</span>
+    <button (click)="nextPage()">Next &rarr;</button>
+</div>
+    }
+</div>
