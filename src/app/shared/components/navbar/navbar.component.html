@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <a routerLink="/" class="navbar-logo">
+        <span class="logo-icon">JF</span>
+        <span class="logo-text">JobFinder</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a routerLink="/jobs" routerLinkActive="active">Jobs</a></li>
+        <li><a routerLink="/favorites" routerLinkActive="active">Favorites</a></li>
+        <li><a routerLink="/applications" routerLinkActive="active">Applications</a></li>
+        <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+    </ul>
+
+    <div class="nav-auth">
+        @if (!isAuthenticated) {
+        <a routerLink="/login" routerLinkActive="active" class="nav-auth-link">Log in</a>
+        <a routerLink="/register" class="nav-auth-btn">Sign up</a>
+        }
+        @if (isAuthenticated) {
+        <button class="nav-auth-btn nav-auth-btn--outline" (click)="onLogout()">Log out</button>
+        }
+    </div>
+</nav>
