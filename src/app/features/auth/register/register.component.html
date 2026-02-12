@@ -1,0 +1,49 @@
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Create an account</h2>
+            <p class="auth-subtitle">Start tracking your dream job today</p>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="prenom">First Name</label>
+                    <input id="prenom" type="text" formControlName="prenom" class="form-control" placeholder="John" />
+                    @if (errorMessage('prenom')) {
+                    <span class="error-message">{{ errorMessage('prenom') }}</span>
+                    }
+                </div>
+                <div class="form-group">
+                    <label for="nom">Last Name</label>
+                    <input id="nom" type="text" formControlName="nom" class="form-control" placeholder="Doe" />
+                    @if (errorMessage('nom')) {
+                    <span class="error-message">{{ errorMessage('nom') }}</span>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" formControlName="email" class="form-control"
+                    placeholder="you&#64;example.com" />
+                @if (errorMessage('email')) {
+                <span class="error-message">{{ errorMessage('email') }}</span>
+                }
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" formControlName="password" class="form-control"
+                    placeholder="Min 6 characters" />
+                @if (errorMessage('password')) {
+                <span class="error-message">{{ errorMessage('password') }}</span>
+                }
+            </div>
+            @if (registrationError()) {
+            <div class="registration-error">
+                {{ registrationError() }}
+            </div>
+            }
+            <button type="submit" class="btn btn-full" [disabled]="registerForm.invalid">Create account</button>
+            <p class="form-link">Already have an account? <a routerLink="/login">Sign in</a></p>
+        </form>
+    </div>
+</div>
