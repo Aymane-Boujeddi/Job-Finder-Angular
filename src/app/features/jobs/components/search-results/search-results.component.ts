@@ -1,5 +1,5 @@
 import { Component, EventEmitter, input, output } from '@angular/core';
-import { JobCardComponent } from '../../../../shared/components/job-card/job-card.component';
+import { JobCardComponent } from '../job-card/job-card.component';
 import { JobOffer } from '../../../../core/models/job.model';
 
 @Component({
@@ -16,12 +16,12 @@ export class SearchResultsComponent {
   next = output<void>();
   previous = output<void>();
 
-  previousPage() : void {
+  previousPage(): void {
     this.previous.emit();
   }
-  
-  nextPage() : void {
-    console.log("next page");
+
+  nextPage(): void {
+    console.log('next page');
     this.next.emit();
   }
 }

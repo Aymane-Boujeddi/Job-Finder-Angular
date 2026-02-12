@@ -5,8 +5,8 @@
                 <h3 class="job-card-title">{{ job()?.title }}</h3>
                 <p class="job-card-company">{{ job()?.company }}</p>
             </div>
-            @if (job()?.minSalary) {
-            <span class="job-card-salary">{{ job()?.minSalary }} - {{ job()?.maxSalary }} $</span>
+            @if (job()?.salary) {
+            <span class="job-card-salary">{{ job()?.salary }} </span>
             }
         </div>
         <div class="job-card-meta">
@@ -17,9 +17,15 @@
     </div>
     <div class="job-card-footer">
         <a [href]="job()?.url" target="_blank" rel="noopener" class="btn btn-sm">View Offer</a>
-        @if (isAuthenticated) {
-        <button class="btn btn-sm btn-ghost" (click)="onAddToFavorites()">&#9825; Save</button>
-        <button class="btn btn-sm btn-ghost" (click)="onTrackApplication()">+ Track</button>
+        @if (authService.isLoggedIn()) {
+        <div style="margin-left: auto; display: flex; gap: 0.5rem;">
+            @if (isFavorite()) {
+            <button class="btn btn-sm" (click)="onAddToFavorites()">❤️ Unfavorite</button>
+            } @else {
+            <button class="btn btn-sm" (click)="onAddToFavorites()">🤍 Favorite</button>
+            }
+            <button class="btn btn-sm" (click)="onTrackApplication()">+ Track</button>
+        </div>
         }
     </div>
 </div>
