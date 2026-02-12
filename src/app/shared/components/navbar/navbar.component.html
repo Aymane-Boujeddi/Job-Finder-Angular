@@ -12,11 +12,12 @@
     </ul>
 
     <div class="nav-auth">
-        @if (!isAuthenticated) {
+        @if (!authService.isLoggedIn()) {
         <a routerLink="/login" routerLinkActive="active" class="nav-auth-link">Log in</a>
         <a routerLink="/register" class="nav-auth-btn">Sign up</a>
         }
-        @if (isAuthenticated) {
+        @if (authService.isLoggedIn()) {
+        <span class="nav-user-name">{{ authService.currentUser()?.prenom }} {{ authService.currentUser()?.nom }}</span>
         <button class="nav-auth-btn nav-auth-btn--outline" (click)="onLogout()">Log out</button>
         }
     </div>
