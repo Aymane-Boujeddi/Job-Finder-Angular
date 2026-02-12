@@ -1,0 +1,32 @@
+@if (favorites().length === 0) {
+<div class="empty-state-box">
+    <p class="empty-state-icon">&#9825;</p>
+    <p class="empty-state">No saved jobs yet</p>
+    <p class="empty-state-hint">Search for jobs and save the ones you like</p>
+</div>
+} @else {
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (fav of favorites(); track fav.id) {
+            <tr>
+                <td>{{ fav.title }}</td>
+                <td>{{ fav.company }}</td>
+                <td>{{ fav.location }}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="onRemove(fav.id!)">Remove</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
