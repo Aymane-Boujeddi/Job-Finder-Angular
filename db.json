@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "85d1",
+      "nom": "boujeddi",
+      "prenom": "aymane",
+      "email": "aymane655@gmail.com",
+      "password": "password1"
+    }
+  ],
+  "favoritesOffers": [],
+  "applications": []
+}
