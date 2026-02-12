@@ -1,0 +1,13 @@
+<div class="page">
+    <div class="page-header">
+        <h1>Profile</h1>
+        <p class="page-subtitle">Manage your account details</p>
+    </div>
+    <div class="profile-card">
+        <app-profile-form [currentUser]="user()" [passwordErrorMessage]="passwordErrorMessage()"
+            [passwordSuccessMessage]="passwordSuccessMessage()" [informationErrorMessage]="informationErrorMessage()"
+            [informationSuccessMessage]="informationSuccessMessage()" (profileUpdate)="onProfileUpdate($event)"
+            (passwordUpdate)="onPasswordUpdate($event)">
+        </app-profile-form>
+    </div>
+</div>
