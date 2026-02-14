@@ -8,7 +8,6 @@ export const apiInterceptor : HttpInterceptorFn = (request , next) => {
         const requestHeader = request.clone({
             setHeaders : {
                 'Authorization-Key' : environement.apiKey,
-                // 'User-Agent' : environement.email,
                
             }
         });
