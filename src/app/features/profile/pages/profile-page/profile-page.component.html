@@ -1,13 +1,32 @@
-<div class="page">
-    <div class="page-header">
-        <h1>Profile</h1>
-        <p class="page-subtitle">Manage your account details</p>
+<div>
+    <div class="mb-8">
+        <h1 class="text-[1.75rem] font-bold text-zinc-900 tracking-tight mb-1">Profile</h1>
+        <p class="text-zinc-500 text-[0.9375rem] mt-1">Manage your account details</p>
     </div>
-    <div class="profile-card">
+    <div class="bg-white border border-zinc-200 rounded-md p-6 max-w-175 mx-auto">
         <app-profile-form [currentUser]="user()" [passwordErrorMessage]="passwordErrorMessage()"
             [passwordSuccessMessage]="passwordSuccessMessage()" [informationErrorMessage]="informationErrorMessage()"
             [informationSuccessMessage]="informationSuccessMessage()" (profileUpdate)="onProfileUpdate($event)"
             (passwordUpdate)="onPasswordUpdate($event)">
         </app-profile-form>
     </div>
+
+    <div class="mt-8 bg-white border border-zinc-200 rounded-md max-w-175 mx-auto">
+        <div class="p-4 flex justify-between items-center gap-4 max-md:flex-col max-md:items-stretch">
+            <div>
+                <h3 class="text-sm font-semibold text-zinc-900 mb-1">Delete Account</h3>
+                <p class="text-[0.8125rem] text-zinc-500 m-0">Once you delete your account, there is no going back.
+                    Please be certain.</p>
+            </div>
+            <button
+                class="inline-flex items-center justify-center px-4 py-2 bg-transparent text-red-600 border border-red-200 rounded-md cursor-pointer text-[0.8125rem] font-semibold transition-colors hover:bg-red-50 max-md:w-full"
+                (click)="openDeleteModal()">
+                Delete Account
+            </button>
+        </div>
+    </div>
+
+    <app-delete-account-modal [isOpen]="showDeleteModal()" (confirm)="confirmDeleteAccount()"
+        (cancelled)="closeDeleteModal()">
+    </app-delete-account-modal>
 </div>
