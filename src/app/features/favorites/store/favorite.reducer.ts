@@ -14,6 +14,9 @@ export const initialState: FavoritesState = {
   error: null,
 };
 
+export const favoriteStoreKey = "FavoriteStore";
+
+
 export const favoritesReducer = createReducer(
   initialState,
 

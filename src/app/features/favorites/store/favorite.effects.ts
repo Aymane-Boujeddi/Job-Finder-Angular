@@ -8,7 +8,7 @@ import { AuthService } from '../../../core/services/auth.service';
 @Injectable()
 export class FavoriteEffects {
   private readonly actions$ = inject(Actions);
-  private readonly favoritesService = inject(FavoritesService);
+    private readonly favoritesService = inject(FavoritesService);
   private readonly authService = inject(AuthService);
 
   loadFavorites$ = createEffect(() =>
@@ -71,3 +71,5 @@ export class FavoriteEffects {
     ),
   );
 }
+
+

@@ -9,11 +9,10 @@ export const selectFavoritesLoading = createSelector(
   selectFavoritesState,
   (state) => state.loading,
 );
-export const selectFavorite = (offerId : string) =>
+export const selectFavorite = (offerId: string) =>
   createSelector(selectAllFavorites, (favorites) => favorites.find((f) => f.offerId === offerId));
 
 export const selectFavoritesError = createSelector(selectFavoritesState, (state) => state.error);
-
 
 export const selectIsFavorite = (offerId: string) =>
   createSelector(selectAllFavorites, (favorites) => favorites.some((f) => f.offerId === offerId));
