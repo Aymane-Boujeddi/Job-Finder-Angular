@@ -6,6 +6,16 @@ import { Store } from '@ngrx/store';
 import { selectFavorite, selectIsFavorite } from '../../../favorites/store/favorite.selectors';
 import { addFavorite, removeFavorite } from '../../../favorites/store/favorite.actions';
 import { FavoriteOffer } from '../../../../core/models/favorite.model';
+import {
+  addApplication,
+  removeApplication,
+} from '../../../applications/store/applications.actions';
+import {
+  selectApplication,
+  selectIsAlreadyApplied,
+} from '../../../applications/store/applications.selector';
+import { Application, Status } from '../../../../core/models/application.model';
+import { environement } from '../../../../environements/environment.local';
 
 @Component({
   selector: 'app-job-card',
@@ -17,7 +27,13 @@ export class JobCardComponent {
   private readonly store = inject(Store);
   job = input<JobOffer>();
 
-  // Reactive computed signals that update when job() changes
+  // Track loading states
+  isProcessing = computed(() => {
+    return this.store.selectSignal(
+      (state: any) => state.applicationStore?.isLoading || state.favoriteStore?.isLoading,
+    )();
+  });
+
   isFavorite = computed(() => {
     const jobId = this.job()?.id;
     if (!jobId) return false;
@@ -30,7 +46,24 @@ export class JobCardComponent {
     return this.store.selectSignal(selectFavorite(jobId))();
   });
 
+  isApplied = computed(() => {
+    const jobId = this.job()?.id;
+    if (!jobId) return false;
+    return this.store.selectSignal(selectIsAlreadyApplied(jobId))();
+  });
+
+  appliedOffer = computed(() => {
+    const jobId = this.job()?.id;
+    if (!jobId) return null;
+    return this.store.selectSignal(selectApplication(jobId))();
+  });
+
   onAddToFavorites(): void {
+    // Prevent action if already processing
+    if (this.isProcessing()) {
+      return;
+    }
+
     const currentUser = this.authService.currentUser();
     if (this.isFavorite()) {
       this.store.dispatch(removeFavorite({ id: this.favoriteOffer()!.id! }));
@@ -47,5 +80,30 @@ export class JobCardComponent {
     }
   }
 
-  onTrackApplication(): void {}
+  onTrackApplication(): void {
+    // Prevent action if already processing
+    if (this.isProcessing()) {
+      return;
+    }
+
+    const currentUser = this.authService.currentUser();
+    if (this.isApplied()) {
+      this.store.dispatch(removeApplication({ id: this.appliedOffer()!.id! }));
+    } else {
+      const newApplication: Application = {
+        userId: currentUser?.id!,
+        offerId: this.job()!.id,
+        apiSource: environement.apiSource,
+        title: this.job()!.title,
+        company: this.job()!.company,
+        location: this.job()!.location,
+        status: Status.EN_ATTENTE,
+        dateAdded: new Date().toISOString(),
+        notes: '',
+        url: this.job()!.url,
+      };
+
+      this.store.dispatch(addApplication({ application: newApplication }));
+    }
+  }
 }

@@ -11,7 +11,6 @@ import { loadFavorites, removeFavorite } from '../store/favorite.actions';
 export class FavoriteListComponent implements OnInit {
   private readonly store = inject(Store);
 
-  // ✅ Use store signal directly - automatically updates when store changes
   favorites = this.store.selectSignal(selectAllFavorites);
 
   ngOnInit(): void {
