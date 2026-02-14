@@ -4,6 +4,9 @@ import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectAllFavorites } from '../../features/favorites/store/favorite.selectors';
+import { selectAllApplications } from '../../features/applications/store/applications.selector';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -11,6 +14,7 @@ export class AuthService {
   private baseUrl = 'http://localhost:3000/users';
   private router = inject(Router);
   private storageService = inject(StorageService);
+  private store = inject(Store);
 
   currentUser = signal<User | null>(null);
   isLoggedIn = computed(() => this.currentUser() !== null);
@@ -22,6 +26,7 @@ export class AuthService {
   private initializeAuth(): void {
     const storedUser = this.storageService.get('user');
     if (storedUser) {
+      this.currentUser.set(storedUser);
       this.getUser(storedUser.email);
     }
   }
@@ -41,6 +46,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
+    // console.log(this.currentUser());
     return this.currentUser() !== null;
   }
 
@@ -127,4 +133,20 @@ export class AuthService {
         }),
       );
   }
+
+  deleteAccount(): Observable<void> {
+    const currentUser = this.currentUser();
+    if (!currentUser || !currentUser.id) {
+      return throwError(() => new Error('User not authenticated'));
+    }
+    return this.httpClient.delete<void>(`${this.baseUrl}/${currentUser.id}`).pipe(  
+      tap(() => {
+        this.logout();
+
+      }),
+      
+    );
+  }
+
+  
 }
