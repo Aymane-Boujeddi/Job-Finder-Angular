@@ -5,8 +5,7 @@ export interface JobOffer {
   location: string;
   description: string;
   date: string;
-  minSalary: string;
-  maxSalary: string;
+  salary : string;
   url: string;
 }
 
@@ -17,6 +16,7 @@ export interface JobResponse {
 
 export interface USAJobsResponse {
   SearchResult: {
+    
     SearchResultCountAll : number,
     SearchResultItems: Array<{
       MatchedObjectId: string;
@@ -35,6 +35,7 @@ export interface USAJobsResponse {
           MinimumRange: string;
           MaximumRange: string;
           RateIntervalCode: string; 
+          Description : string;
         }>;
 
         UserArea: {
