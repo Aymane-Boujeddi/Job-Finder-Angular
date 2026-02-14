@@ -9,18 +9,19 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { favoritesReducer } from './features/favorites/store/favorite.reducer';
 import { FavoriteEffects } from './features/favorites/store/favorite.effects';
 import { apiInterceptor } from './core/interceptors/api.interceptor';
+import { applicationsReducer } from './features/applications/store/applications.reducers';
+import { ApplicationEffects } from './features/applications/store/applications.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([errorInterceptor , apiInterceptor])),
-    provideStore({ favorites: favoritesReducer }),
-    provideEffects([FavoriteEffects]),
+    provideHttpClient(withInterceptors([apiInterceptor])),
+    provideStore({ favorites: favoritesReducer , applications : applicationsReducer}),
+    provideEffects([FavoriteEffects , ApplicationEffects]),
     provideStoreDevtools({ maxAge: 25 }),
   ],
 };
