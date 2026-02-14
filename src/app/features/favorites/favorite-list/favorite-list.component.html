@@ -1,28 +1,33 @@
 @if (favorites().length === 0) {
-<div class="empty-state-box">
-    <p class="empty-state-icon">&#9825;</p>
-    <p class="empty-state">No saved jobs yet</p>
-    <p class="empty-state-hint">Search for jobs and save the ones you like</p>
+<div class="text-center py-12 px-8 bg-white border border-dashed border-zinc-200 rounded-xl">
+    <p class="text-2xl mb-2">&#9825;</p>
+    <p class="text-zinc-500 text-[0.9375rem] font-medium">No saved jobs yet</p>
+    <p class="text-zinc-400 text-[0.8125rem] mt-1">Search for jobs and save the ones you like</p>
 </div>
 } @else {
-<div class="table-container">
-    <table class="table">
-        <thead>
+<div class="bg-white border border-zinc-200 rounded-[10px] overflow-hidden">
+    <table class="w-full border-collapse text-[0.8125rem]">
+        <thead class="bg-zinc-50 border-b border-zinc-200">
             <tr>
-                <th>Title</th>
-                <th>Company</th>
-                <th>Location</th>
-                <th>Actions</th>
+                <th class="px-4 py-3.5 font-semibold text-zinc-700 text-left text-xs uppercase tracking-wide">Title</th>
+                <th class="px-4 py-3.5 font-semibold text-zinc-700 text-left text-xs uppercase tracking-wide">Company
+                </th>
+                <th class="px-4 py-3.5 font-semibold text-zinc-700 text-left text-xs uppercase tracking-wide">Location
+                </th>
+                <th class="px-4 py-3.5 font-semibold text-zinc-700 text-left text-xs uppercase tracking-wide">Actions
+                </th>
             </tr>
         </thead>
         <tbody>
             @for (fav of favorites(); track fav.id) {
-            <tr>
-                <td>{{ fav.title }}</td>
-                <td>{{ fav.company }}</td>
-                <td>{{ fav.location }}</td>
-                <td>
-                    <button class="btn btn-sm btn-danger" (click)="onRemove(fav.id!)">Remove</button>
+            <tr class="border-b border-zinc-100 last:border-b-0">
+                <td class="px-4 py-4 text-zinc-900 font-medium">{{ fav.title }}</td>
+                <td class="px-4 py-4 text-zinc-900">{{ fav.company }}</td>
+                <td class="px-4 py-4 text-zinc-900">{{ fav.location }}</td>
+                <td class="px-4 py-4">
+                    <button
+                        class="inline-flex items-center justify-center px-3 py-1 bg-transparent text-red-600 border border-red-200 rounded-md text-xs font-semibold transition-colors hover:bg-red-50"
+                        (click)="onRemove(fav.id!)">Remove</button>
                 </td>
             </tr>
             }

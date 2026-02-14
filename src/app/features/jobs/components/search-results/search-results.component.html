@@ -1,15 +1,19 @@
-<div class="search-results">
+<div>
     @if (jobsList().length === 0) {
-    <p class="no-results">No results found. Try a different search.</p>
+    <p class="text-center py-8 text-zinc-400 text-[0.9375rem]">No results found. Try a different search.</p>
     }
     @for (job of jobsList(); track job.id) {
     <app-job-card [job]="job"></app-job-card>
     }
     @if (jobsList().length > 0) {
-   <div class="pagination">
-    <button (click)="previousPage()">&larr; Prev</button>
-    <span class="pagination-info">{{ currentPage() }} Page of {{ totalPages() }}</span>
-    <button (click)="nextPage()">Next &rarr;</button>
-</div>
+    <div class="flex justify-center items-center gap-4 mt-8 py-3">
+        <button
+            class="px-3 py-1.5 bg-white border border-zinc-200 rounded-md cursor-pointer text-[0.8125rem] font-medium text-zinc-700 transition-colors hover:bg-zinc-100 disabled:text-zinc-300 disabled:cursor-not-allowed"
+            (click)="previousPage()">&larr; Prev</button>
+        <span class="text-[0.8125rem] text-zinc-500 font-medium">{{ currentPage() }} Page of {{ totalPages() }}</span>
+        <button
+            class="px-3 py-1.5 bg-white border border-zinc-200 rounded-md cursor-pointer text-[0.8125rem] font-medium text-zinc-700 transition-colors hover:bg-zinc-100 disabled:text-zinc-300 disabled:cursor-not-allowed"
+            (click)="nextPage()">Next &rarr;</button>
+    </div>
     }
 </div>

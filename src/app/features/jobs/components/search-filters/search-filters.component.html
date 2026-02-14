@@ -1,14 +1,20 @@
-<div class="search-box">
-    <div class="search-box-inner">
-        <div class="search-field">
-            <label class="search-label">What</label>
-            <input type="text" [(ngModel)]="keyword" placeholder="Job title or keyword" class="search-input" />
+<div class="bg-white border border-zinc-200 rounded-[10px] p-1 mb-8">
+    <div class="flex items-center max-md:flex-col">
+        <div class="flex-1 px-4 py-2 max-md:py-3">
+            <label
+                class="block text-[0.6875rem] font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">What</label>
+            <input type="text" [(ngModel)]="keyword" placeholder="Job title or keyword"
+                class="w-full border-none outline-none text-[0.9375rem] text-zinc-900 bg-transparent placeholder:text-zinc-300" />
         </div>
-        <div class="search-divider"></div>
-        <div class="search-field">
-            <label class="search-label">Where</label>
-            <input type="text" [(ngModel)]="location" placeholder="City, country or remote" class="search-input" />
+        <div class="w-px h-8 bg-zinc-200 shrink-0 max-md:w-full max-md:h-px"></div>
+        <div class="flex-1 px-4 py-2 max-md:py-3">
+            <label
+                class="block text-[0.6875rem] font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">Where</label>
+            <input type="text" [(ngModel)]="location" placeholder="City, country or remote"
+                class="w-full border-none outline-none text-[0.9375rem] text-zinc-900 bg-transparent placeholder:text-zinc-300" />
         </div>
-        <button class="search-btn" (click)="onSearch()">Search</button>
+        <button
+            class="shrink-0 px-6 py-2.5 bg-zinc-900 text-white border-none rounded-lg text-sm font-semibold cursor-pointer transition-colors hover:bg-zinc-800 m-1 max-md:mx-2 max-md:my-2 max-md:w-[calc(100%-1rem)]"
+            (click)="onSearch()">Search</button>
     </div>
 </div>

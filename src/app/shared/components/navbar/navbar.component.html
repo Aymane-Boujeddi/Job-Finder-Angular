@@ -1,24 +1,42 @@
-<nav class="navbar">
-    <a routerLink="/" class="navbar-logo">
-        <span class="logo-icon">JF</span>
-        <span class="logo-text">JobFinder</span>
+<nav class="flex items-center justify-between px-8 h-14 bg-white border-b border-zinc-200 sticky top-0 z-50">
+    <a routerLink="/" class="flex items-center gap-2 no-underline text-zinc-900">
+        <span
+            class="inline-flex items-center justify-center w-7.5 h-7.5 bg-zinc-900 text-white text-[0.7rem] font-extrabold rounded-md tracking-tight">JF</span>
+        <span class="text-base font-bold tracking-tight">JobFinder</span>
     </a>
 
-    <ul class="nav-links">
-        <li><a routerLink="/jobs" routerLinkActive="active">Jobs</a></li>
-        <li><a routerLink="/favorites" routerLinkActive="active">Favorites</a></li>
-        <li><a routerLink="/applications" routerLinkActive="active">Applications</a></li>
-        <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+    <ul class="flex list-none gap-1">
+        <li><a routerLink="/jobs" routerLinkActive="!text-zinc-900 !bg-zinc-100"
+                class="inline-flex items-center px-3 py-1.5 text-[0.8125rem] font-medium text-zinc-500 no-underline rounded-md transition-colors hover:text-zinc-900 hover:bg-zinc-100">Jobs</a>
+        </li>
+        @if(authService.isLoggedIn()){
+        <li><a routerLink="/favorites" routerLinkActive="!text-zinc-900 !bg-zinc-100"
+                class="inline-flex items-center px-3 py-1.5 text-[0.8125rem] font-medium text-zinc-500 no-underline rounded-md transition-colors hover:text-zinc-900 hover:bg-zinc-100">Favorites</a>
+        </li>
+        <li><a routerLink="/applications" routerLinkActive="!text-zinc-900 !bg-zinc-100"
+                class="inline-flex items-center px-3 py-1.5 text-[0.8125rem] font-medium text-zinc-500 no-underline rounded-md transition-colors hover:text-zinc-900 hover:bg-zinc-100">Applications</a>
+        </li>
+        <li><a routerLink="/profile" routerLinkActive="!text-zinc-900 !bg-zinc-100"
+                class="inline-flex items-center px-3 py-1.5 text-[0.8125rem] font-medium text-zinc-500 no-underline rounded-md transition-colors hover:text-zinc-900 hover:bg-zinc-100">Profile</a>
+        </li>
+        }
     </ul>
 
-    <div class="nav-auth">
+    <div class="flex items-center gap-2">
         @if (!authService.isLoggedIn()) {
-        <a routerLink="/login" routerLinkActive="active" class="nav-auth-link">Log in</a>
-        <a routerLink="/register" class="nav-auth-btn">Sign up</a>
+        <a routerLink="/login" routerLinkActive="!text-zinc-900 !bg-zinc-100"
+            class="text-[0.8125rem] font-medium text-zinc-500 no-underline px-3 py-1.5 rounded-md transition-colors hover:text-zinc-900 hover:bg-zinc-100">Log
+            in</a>
+        <a routerLink="/register"
+            class="text-[0.8125rem] font-semibold text-white bg-zinc-900 border border-zinc-900 px-3.5 py-1.5 rounded-md no-underline transition-colors hover:bg-zinc-800">Sign
+            up</a>
         }
         @if (authService.isLoggedIn()) {
-        <span class="nav-user-name">{{ authService.currentUser()?.prenom }} {{ authService.currentUser()?.nom }}</span>
-        <button class="nav-auth-btn nav-auth-btn--outline" (click)="onLogout()">Log out</button>
+        <span class="text-[0.8125rem] font-semibold text-zinc-900 px-3 py-1.5">{{ authService.currentUser()?.prenom }}
+            {{ authService.currentUser()?.nom }}</span>
+        <button
+            class="text-[0.8125rem] font-semibold bg-transparent text-zinc-900 border border-zinc-300 px-3.5 py-1.5 rounded-md cursor-pointer transition-colors hover:bg-zinc-100"
+            (click)="onLogout()">Log out</button>
         }
     </div>
 </nav>
