@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { alreadyAuthenticatedGuard } from './core/guards/visitor.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'jobs', pathMatch: 'full' },
@@ -7,11 +8,13 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () =>
       import('./features/auth/login/login.component').then((m) => m.LoginComponent),
+    canActivate : [alreadyAuthenticatedGuard],
   },
   {
     path: 'register',
     loadComponent: () =>
       import('./features/auth/register/register.component').then((m) => m.RegisterComponent),
+    
   },
   {
     path: 'jobs',
