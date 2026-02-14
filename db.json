@@ -5,9 +5,49 @@
       "nom": "boujeddi",
       "prenom": "aymane",
       "email": "aymane655@gmail.com",
-      "password": "password1"
+      "password": "password"
     }
   ],
   "favoritesOffers": [],
-  "applications": []
+  "applications": [
+    {
+      "id": "c3cf",
+      "userId": "85d1",
+      "offerId": "856435900",
+      "apiSource": "data.usajobs.gov/api",
+      "title": "CHILD & YOUTH PROGRAM ASSISTANT (CDC), CY-01/02/RFT, ALL CAMPS",
+      "company": "U.S. Marine Corps",
+      "location": "Camp Foster, Japan",
+      "status": "refuse",
+      "dateAdded": "2026-02-14T18:34:57.242Z",
+      "notes": "",
+      "url": "https://www.usajobs.gov:443/job/856435900"
+    },
+    {
+      "id": "73ef",
+      "userId": "85d1",
+      "offerId": "856436000",
+      "apiSource": "data.usajobs.gov/api",
+      "title": "CHILD & YOUTH PROGRAM ASSISTANT (CDC), CY-01/02/RPT, ALL CAMPS",
+      "company": "U.S. Marine Corps",
+      "location": "Camp Foster, Japan",
+      "status": "en_attente",
+      "dateAdded": "2026-02-14T18:34:59.211Z",
+      "notes": "",
+      "url": "https://www.usajobs.gov:443/job/856436000"
+    },
+    {
+      "id": "0a5c",
+      "userId": "85d1",
+      "offerId": "856436100",
+      "apiSource": "data.usajobs.gov/api",
+      "title": "CHILD & YOUTH PROGRAM ASSISTANT (SAC), CY-01/02/RPT, ALL CAMPS",
+      "company": "U.S. Marine Corps",
+      "location": "Camp Foster, Japan",
+      "status": "en_attente",
+      "dateAdded": "2026-02-14T18:35:00.244Z",
+      "notes": "",
+      "url": "https://www.usajobs.gov:443/job/856436100"
+    }
+  ]
 }
