@@ -136,17 +136,21 @@ export class AuthService {
 
   deleteAccount(): Observable<void> {
     const currentUser = this.currentUser();
+
     if (!currentUser || !currentUser.id) {
       return throwError(() => new Error('User not authenticated'));
     }
     return this.httpClient.delete<void>(`${this.baseUrl}/${currentUser.id}`).pipe(  
       tap(() => {
         this.logout();
-
       }),
       
     );
   }
+  
 
   
+
+
+
 }
