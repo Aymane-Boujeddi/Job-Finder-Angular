@@ -8,7 +8,16 @@
       "password": "password"
     }
   ],
-  "favoritesOffers": [],
+  "favoritesOffers": [
+    {
+      "id": "f55e",
+      "userId": "85d1",
+      "offerId": "857589800",
+      "title": "INTELLIGENCE OPERATIONS SPECIALIST (TITLE 32)",
+      "company": "Air National Guard Units",
+      "location": "Nashville, Tennessee"
+    }
+  ],
   "applications": [
     {
       "id": "c3cf",
@@ -48,6 +57,19 @@
       "dateAdded": "2026-02-14T18:35:00.244Z",
       "notes": "",
       "url": "https://www.usajobs.gov:443/job/856436100"
+    },
+    {
+      "id": "be31",
+      "userId": "85d1",
+      "offerId": "857589800",
+      "apiSource": "data.usajobs.gov/api",
+      "title": "INTELLIGENCE OPERATIONS SPECIALIST (TITLE 32)",
+      "company": "Air National Guard Units",
+      "location": "Nashville, Tennessee",
+      "status": "en_attente",
+      "dateAdded": "2026-02-15T10:51:31.612Z",
+      "notes": "",
+      "url": "https://www.usajobs.gov:443/job/857589800"
     }
   ]
 }
