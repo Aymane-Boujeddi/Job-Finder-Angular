@@ -15,7 +15,7 @@ import {
   selectIsAlreadyApplied,
 } from '../../../applications/store/applications.selector';
 import { Application, Status } from '../../../../core/models/application.model';
-import { environement } from '../../../../environements/environment.local';
+import { environement } from '../../../../core/environements/environment.local';
 
 @Component({
   selector: 'app-job-card',
@@ -27,12 +27,7 @@ export class JobCardComponent {
   private readonly store = inject(Store);
   job = input<JobOffer>();
 
-  // Track loading states
-  isProcessing = computed(() => {
-    return this.store.selectSignal(
-      (state: any) => state.applicationStore?.isLoading || state.favoriteStore?.isLoading,
-    )();
-  });
+ 
 
   isFavorite = computed(() => {
     const jobId = this.job()?.id;
@@ -59,10 +54,7 @@ export class JobCardComponent {
   });
 
   onAddToFavorites(): void {
-    // Prevent action if already processing
-    if (this.isProcessing()) {
-      return;
-    }
+   
 
     const currentUser = this.authService.currentUser();
     if (this.isFavorite()) {
@@ -81,10 +73,8 @@ export class JobCardComponent {
   }
 
   onTrackApplication(): void {
-    // Prevent action if already processing
-    if (this.isProcessing()) {
-      return;
-    }
+    
+   
 
     const currentUser = this.authService.currentUser();
     if (this.isApplied()) {

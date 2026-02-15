@@ -26,21 +26,21 @@
             @if (isFavorite()) {
             <button
                 class="inline-flex items-center justify-center px-3 py-1 bg-zinc-900 text-white border border-zinc-900 rounded-md text-xs font-semibold transition-colors hover:bg-zinc-800 disabled:bg-zinc-300 disabled:border-zinc-300 disabled:cursor-not-allowed"
-                (click)="onAddToFavorites()" [disabled]="isProcessing()">❤️ Unfavorite</button>
+                (click)="onAddToFavorites()" >❤️ Unfavorite</button>
             } @else {
             <button
                 class="inline-flex items-center justify-center px-3 py-1 bg-zinc-900 text-white border border-zinc-900 rounded-md text-xs font-semibold transition-colors hover:bg-zinc-800 disabled:bg-zinc-300 disabled:border-zinc-300 disabled:cursor-not-allowed"
-                (click)="onAddToFavorites()" [disabled]="isProcessing()">🤍 Favorite</button>
+                (click)="onAddToFavorites()" >🤍 Favorite</button>
             }
 
             @if(isApplied()){
             <button
                 class="inline-flex items-center justify-center px-3 py-1 bg-zinc-900 text-white border border-zinc-900 rounded-md text-xs font-semibold transition-colors hover:bg-zinc-800 disabled:bg-zinc-300 disabled:border-zinc-300 disabled:cursor-not-allowed"
-                (click)="onTrackApplication()" [disabled]="isProcessing()">- Track</button>
+                (click)="onTrackApplication()" >- Track</button>
             }@else {
             <button
                 class="inline-flex items-center justify-center px-3 py-1 bg-zinc-900 text-white border border-zinc-900 rounded-md text-xs font-semibold transition-colors hover:bg-zinc-800 disabled:bg-zinc-300 disabled:border-zinc-300 disabled:cursor-not-allowed"
-                (click)="onTrackApplication()" [disabled]="isProcessing()">+ Track</button>
+                (click)="onTrackApplication()" >+ Track</button>
             }
         </div>
         }
